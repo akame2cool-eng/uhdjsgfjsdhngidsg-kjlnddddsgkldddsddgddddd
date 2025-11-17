@@ -470,19 +470,19 @@ async def authnet_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             response = f"""Approved ✅
 
 Card: {parsed_card['number']}|{parsed_card['month']}|{parsed_card['year']}|{parsed_card['cvv']}
-Gateway: AUTHNET $300
+Gateway: authent $32
 Response: {message}"""
         elif status == "DECLINED":
             response = f"""Declined ❌
 
 Card: {parsed_card['number']}|{parsed_card['month']}|{parsed_card['year']}|{parsed_card['cvv']}
-Gateway: AUTHNET $300
+Gateway: authnet $32
 Response: {message}"""
         else:
             response = f"""Error ⚠️
 
 Card: {parsed_card['number']}|{parsed_card['month']}|{parsed_card['year']}|{parsed_card['cvv']}
-Gateway: AUTHNET $300
+Gateway: authnet $32
 Response: {message}"""
         
         # ADD BIN INFO IF AVAILABLE
@@ -502,3 +502,4 @@ Tier: {bin_data.get('tier', 'N/A')}"""
     except Exception as e:
         logger.error(f"❌ Error in authnet_command: {e}")
         await wait_message.edit_text(f"❌ Error: {str(e)}")
+
