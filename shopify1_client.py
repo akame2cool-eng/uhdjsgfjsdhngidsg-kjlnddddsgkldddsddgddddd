@@ -169,8 +169,14 @@ class Shopify1CheckoutAutomation:
             self.driver.get("https://earthesim.com/cart")
             time.sleep(5)
             
+            # CHIUDI IL POPUP ANCHE NEL CARRELLO
+            self.close_that_fucking_popup()
+            time.sleep(2)
+            
             checkout_button = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button#checkout")))
-            checkout_button.click()
+            
+            # USA JAVASCRIPT CLICK ANCHE QUI
+            self.driver.execute_script("arguments[0].click();", checkout_button)
             print("✅ Cliccato 'Check out'")
             
             print("⏳ Attendo reindirizzamento a checkout...")
